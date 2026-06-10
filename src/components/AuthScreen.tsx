@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { localAuth } from '../lib/localAuth';
 import { Sparkles, ShieldCheck, Mail, Lock, User, LogIn, UserPlus, AlertCircle, RefreshCw, Phone, ArrowLeft, CheckCircle, Eye, EyeOff } from 'lucide-react';
 
-const brandLogo = "/src/assets/images/bdlogo.png";
+const brandLogo = "../src/assets/images/bdlogo.png";
 
 interface AuthScreenProps {
   onAuthSuccess: () => void;
