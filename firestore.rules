@@ -1,0 +1,72 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Catch-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 64 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // User Profile Document Validation
+    function isValidUser(data) {
+      return data.uid == request.auth.uid 
+          && data.email is string && data.email.size() <= 128
+          && data.balance is number && data.balance >= 0;
+    }
+
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      
+      allow create: if isOwner(userId) 
+                    && isValidUser(incoming())
+                    && incoming().createdAt == request.time;
+                    
+      allow update: if isOwner(userId) 
+                    && isValidUser(incoming())
+                    && incoming().createdAt == existing().createdAt;
+                    
+      allow delete: if false; // Profiles are never deleted
+
+      // Transaction Subcollection Rules
+      match /transactions/{transactionId} {
+        
+        function isValidTransaction(tx) {
+          return tx.id is string && tx.id.size() <= 64
+              && tx.type is string && (tx.type == 'deposit' || tx.type == 'withdraw' || tx.type == 'service')
+              && tx.amount is number && tx.amount >= 0
+              && tx.method is string && tx.method.size() <= 32
+              && tx.status is string && (tx.status == 'Completed' || tx.status == 'Pending' || tx.status == 'Rejected');
+        }
+
+        allow get, list: if isOwner(userId);
+        
+        allow create: if isOwner(userId) 
+                      && isValidTransaction(incoming())
+                      && incoming().timestamp is string;
+                      
+        allow update, delete: if false; // Immutable ledger
+      }
+    }
+  }
+}

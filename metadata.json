@@ -1,0 +1,6 @@
+{
+  "name": "BD Digital Service Portal",
+  "description": "An all-in-one citizenship and utility tool helping users generate NID cards, birth and death registries, track numbers, and perform mock service billing and calculations.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

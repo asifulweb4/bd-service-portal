@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile with balance and verification status",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "balance": { "type": "number" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "balance"]
+    },
+    "Transaction": {
+      "title": "Transaction Ledger",
+      "description": "Deposit, withdrawal, and service charge transactions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["deposit", "withdraw", "service"] },
+        "serviceName": { "type": "string" },
+        "amount": { "type": "number" },
+        "method": { "type": "string" },
+        "trxId": { "type": "string" },
+        "accountNo": { "type": "string" },
+        "status": { "type": "string", "enum": ["Completed", "Pending", "Rejected"] },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "type", "amount", "method", "status", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Individual user profile records"
+    },
+    "/users/{userId}/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Sub-collection of transactions logged for each citizen"
+    }
+  }
+}

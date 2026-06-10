@@ -1,0 +1,7 @@
+server.ts
+dist/server.cjs
+.git
+node_modules
+.env.local
+api/**/*.ts
+

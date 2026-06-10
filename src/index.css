@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;750&display=swap');
+@import "tailwindcss";
+
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-scale-up {
+    animation: scaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-logo {
+    animation: logoPulse 2.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .animate-typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: max-content;
+    width: 0;
+    border-right: 2px solid rgba(126, 34, 206, 0.85);
+    animation: typing 2.2s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(126, 34, 206, 0.85); }
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* App-wide theme overrides: prefer pink / purple / white gradient and avoid pure black */
+:root {
+  --app-accent-start: #ff7ab6; /* Soft Pink */
+  --app-accent-mid: #8b5cf6;   /* Soft Purple */
+  --app-accent-end: #fdf2f8;   /* Very Light Pink Tint */
+  --app-text-dark: #3b0764;    /* Deep Purple Text (No Black) */
+  --app-border: rgba(139, 92, 246, 0.15);
+  --app-surface-white: rgba(255,255,255,0.95);
+  --app-surface-white-2: rgba(255,255,255,0.88);
+  --app-bg-gradient: linear-gradient(135deg,var(--app-accent-mid) 0%,var(--app-accent-start) 50%,var(--app-accent-end) 100%);
+
+  /* ব্যাকগ্রাউন্ড গ্রেডিয়েন্ট */
+  --app-bg-gradient: linear-gradient(145deg, #ede9fe 0%, #fae8ff 50%, #ffffff 100%);
+}
+
+/* Set a pleasant overall background and default text color */
+html, body, #root {
+  background: var(--app-bg-gradient) !important;
+  color: var(--app-text-dark) !important;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Replace usages of black/gray text with deep purple */
+.text-black,
+.text-gray-900,
+.text-gray-950,
+.text-gray-800,
+.text-gray-700,
+.text-gray-600,
+.text-gray-500,
+.text-gray-400,
+.text-gray-300 {
+  color: var(--app-text-dark) !important;
+}
+
+/* Make 'white' surfaces slightly translucent so gradient shows subtly */
+.bg-white { background: var(--app-surface-white) !important; }
+.bg-white\/90 { background: var(--app-surface-white) !important; }
+.bg-white\/95 { background: var(--app-surface-white) !important; }
+.bg-white\/80 { background: var(--app-surface-white-2) !important; }
+.bg-white\/40 { background: rgba(255,255,255,0.6) !important; }
+.bg-white\/10 { background: rgba(255,255,255,0.08) !important; }
+
+/* Replace black backgrounds with subtle purple gradients */
+.bg-black,
+.bg-black\/60 { background: linear-gradient(90deg, rgba(139,92,246,0.15), rgba(255,122,182,0.08)) !important; }
+
+/* Border tinting to fit the new palette */
+.border-gray-100,
+.border-gray-150,
+.border-gray-200,
+.border-gray-250,
+.border-gray-300,
+.border-gray-400,
+.border-gray-800 {
+  border-color: var(--app-border) !important;
+}
+
+/* Subtle text colours for muted text */
+.text-gray-400,
+.text-gray-500 { color: rgba(43,16,85,0.65) !important; }
+
+/* Utility to force primary gradient on key elements when needed */
+.app-gradient-primary { background: linear-gradient(90deg,var(--app-accent-mid),var(--app-accent-start)) !important; color: white !important; }
+
+/* Ensure icons and SVG strokes don't remain pure black */
+svg, svg * { stroke: currentColor; fill: currentColor; }
+
+/* Card and badge utilities for higher contrast */
+.card-surface {
+  background: white !important;
+  color: var(--app-text-dark) !important;
+  border-radius: 1rem; /* keep rounded look */
+  box-shadow: 0 12px 40px -15px rgba(139,92,246,0.06);
+}
+
+.badge-strong {
+  background: linear-gradient(90deg,var(--app-accent-start),var(--app-accent-mid));
+  color: white !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  padding: 0.15rem 0.5rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.icon-gradient {
+  background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(255,122,182,0.12));
+  color: var(--app-accent-mid) !important;
+}
+
