@@ -22,8 +22,8 @@ import {
 interface WalletGateProps {
   balance: number;
   transactions: Transaction[];
-  onAddMoney: (amount: number, method: 'bKash' | 'Nagad' | 'Rocket' | 'Upay', trxId: string, senderNumber: string) => void;
-  onWithdraw: (amount: number, method: 'bKash' | 'Nagad' | 'Rocket' | 'Upay', accountNo: string) => boolean | Promise<boolean>;
+  onAddMoney: (amount: number, method: 'bKash' | 'Nagad' , trxId: string, senderNumber: string) => void;
+  onWithdraw: (amount: number, method: 'bKash' | 'Nagad' , accountNo: string) => boolean | Promise<boolean>;
   onBack?: () => void;
 }
 
@@ -32,7 +32,7 @@ export default function WalletGate({ balance, transactions, onAddMoney, onWithdr
   
   // Deposit States
   const [depositAmount, setDepositAmount] = useState<string>('500');
-  const [depositMethod, setDepositMethod] = useState<'bKash' | 'Nagad' | 'Rocket' | 'Upay'>('bKash');
+  const [depositMethod, setDepositMethod] = useState<'bKash' | 'Nagad'>('bKash');
   const [depositAccountType, setDepositAccountType] = useState<'Personal' | 'Business'>('Personal');
   const [senderNumber, setSenderNumber] = useState<string>('');
   const [trxId, setTrxId] = useState<string>('');
@@ -44,7 +44,7 @@ export default function WalletGate({ balance, transactions, onAddMoney, onWithdr
 
   // Withdraw States
   const [withdrawAmount, setWithdrawAmount] = useState<string>('200');
-  const [withdrawMethod, setWithdrawMethod] = useState<'bKash' | 'Nagad' | 'Rocket' | 'Upay'>('bKash');
+  const [withdrawMethod, setWithdrawMethod] = useState<'bKash' | 'Nagad'>('bKash');
   const [accountNo, setAccountNo] = useState<string>('');
   const [isWithdrawing, setIsWithdrawing] = useState(false);
   const [withdrawSuccess, setWithdrawSuccess] = useState(false);
@@ -52,14 +52,12 @@ export default function WalletGate({ balance, transactions, onAddMoney, onWithdr
 
   // Merchants numbers simulation
   const MERCHANT_NUMBERS = {
-    bKash: '01616868485',
-    Nagad: '01747156607',
-    Rocket: '01711234567',
-    Upay: '01811234567',
+    bKash: '01739807415',
+    Nagad: '01616868485',
   };
 
   // Get brand color theme
-  const getBrandDetails = (method: 'bKash' | 'Nagad' | 'Rocket' | 'Upay') => {
+  const getBrandDetails = (method: 'bKash' | 'Nagad') => {
     switch (method) {
       case 'bKash':
         return {
@@ -83,28 +81,7 @@ export default function WalletGate({ balance, transactions, onAddMoney, onWithdr
           badgeDot: 'bg-[#f7941d]',
           glow: 'shadow-[0_4px_14px_rgba(247,148,29,0.12)]'
         };
-      case 'Rocket':
-        return {
-          primary: '#8c3494',
-          pastelBg: 'bg-[#8c3494]/5',
-          primaryBg: 'bg-[#8c3494]',
-          borderActive: 'border-[#8c3494]',
-          textActive: 'text-[#8c3494]',
-          ring: 'focus:ring-[#8c3494]/10',
-          badgeDot: 'bg-[#8c3494]',
-          glow: 'shadow-[0_4px_14px_rgba(140,52,148,0.12)]'
-        };
-      case 'Upay':
-        return {
-          primary: '#00529b',
-          pastelBg: 'bg-[#00529b]/5',
-          primaryBg: 'bg-[#00529b]',
-          borderActive: 'border-[#00529b]',
-          textActive: 'text-[#00529b]',
-          ring: 'focus:ring-[#00529b]/10',
-          badgeDot: 'bg-indigo-500',
-          glow: 'shadow-[0_4px_14px_rgba(0,82,155,0.12)]'
-        };
+   
     }
   };
 
@@ -378,7 +355,7 @@ export default function WalletGate({ balance, transactions, onAddMoney, onWithdr
                 </label>
                 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  {(['bKash', 'Nagad', 'Rocket', 'Upay'] as const).map((method) => {
+                  {(['bKash', 'Nagad'] as const).map((method) => {
                     const isSelected = depositMethod === method;
                     const bTheme = getBrandDetails(method);
                     return (
@@ -566,7 +543,7 @@ export default function WalletGate({ balance, transactions, onAddMoney, onWithdr
                   1. Choose Payout Channel / উইথড্র মেথড সিলেক্ট করুন
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  {(['bKash', 'Nagad', 'Rocket', 'Upay'] as const).map((method) => {
+                  {(['bKash', 'Nagad'] as const).map((method) => {
                     const isSelected = withdrawMethod === method;
                     const bTheme = getBrandDetails(method);
                     return (
@@ -600,7 +577,7 @@ export default function WalletGate({ balance, transactions, onAddMoney, onWithdr
                       id="input_withdraw_account"
                       type="tel"
                       required
-                      placeholder="যেমন: 01712345678"
+                      placeholder=""
                       value={accountNo}
                       onChange={(e) => setAccountNo(e.target.value)}
                       className="w-full bg-purple-50/10 border border-purple-100 hover:border-purple-300 focus:border-purple-500 text-purple-950 font-extrabold rounded-xl py-3 px-4 text-xs focus:outline-none focus:ring-4 focus:ring-purple-100 font-mono transition-all"
