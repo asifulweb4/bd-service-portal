@@ -31,52 +31,52 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
   // State managers
   // A. Birth Form
   const [birthInput, setBirthInput] = useState<BirthCertificateInput>({
-    regNo: generateRandomBirth(),
-    dob: '15/12/1995',
-    nameBangla: 'আসিফুল ইসলাম রাফি',
-    nameEnglish: 'Asiful Islam Rafi',
-    fatherBangla: 'মহম্মদ কামরুল হাসান',
-    fatherEnglish: 'Mohammad Kamrul Hasan',
-    motherBangla: 'শারমিন সুলতানা',
-    motherEnglish: 'Sharmin Sultana',
-    birthPlaceBangla: 'উত্তরা সেক্টর ১০, ঢাকা',
-    birthPlaceEnglish: 'Uttara Sector 10, Dhaka'
+    regNo: '',
+    dob: '',
+    nameBangla: '',
+    nameEnglish: '',
+    fatherBangla: '',
+    fatherEnglish: '',
+    motherBangla: '',
+    motherEnglish: '',
+    birthPlaceBangla: '',
+    birthPlaceEnglish: ''
   });
 
   // B. Death Form
   const [deathInput, setDeathInput] = useState<DeathCertificateInput>({
-    regNo: generateRandomBirth(),
-    deathDate: '24/12/2023',
-    nameBangla: 'আব্দুর রহিম শেখ',
-    nameEnglish: 'Abdur Rahim Sheikh',
-    fatherBangla: 'সুলতান শেখ',
-    motherBangla: 'রহিমা বেগম',
-    spouseBangla: 'খাদিজা বেগম',
-    deathPlaceBangla: 'মাইডুল কমপ্লেক্স, সাভার',
-    deathPlaceEnglish: 'Maidul Complex, Savar',
-    cause: 'Senility / বার্ধক্যজনিত সাধারণ অসুস্থতা'
+    regNo: '',
+    deathDate: '',
+    nameBangla: '',
+    nameEnglish: '',
+    fatherBangla: '',
+    motherBangla: '',
+    spouseBangla: '',
+    deathPlaceBangla: '',
+    deathPlaceEnglish: '',
+    cause: ''
   });
 
   // C. NID Form
   const [nidInput, setNidInput] = useState<NIDInput>({
-    nidNo: generateRandomNID(),
-    pin: '1995' + Math.floor(100000000 + Math.random() * 900000000).toString(),
-    nameBangla: 'আসিফুল ইসলাম রাফি',
-    nameEnglish: 'Asiful Islam Rafi',
-    fatherName: 'মহম্মদ কামরুল হাসান',
-    motherName: 'শারমিন সুলতানা',
-    spouseName: 'শারমিন সুলতানা শুমু',
-    dob: '15/12/1995',
-    bloodGroup: 'A+',
-    birthPlace: 'DHAKA',
-    address: 'গ্রাম/রাস্তা: বাড়ি ৩০ রোড ১২, উত্তরা সেক্টর ১০, ডাকঘর: উত্তরা হেড অফিস, পুলিশ স্টেশন: উত্তরা মডেল, জেলা: ঢাকা',
+    nidNo: '',
+    pin: '' + Math.floor(100000000 + Math.random() * 900000000).toString(),
+    nameBangla: '',
+    nameEnglish: '',
+    fatherName: '',
+    motherName: '',
+    spouseName: '',
+    dob: '',
+    bloodGroup: '',
+    birthPlace: '',
+    address: '',
     photoUrl: ''
   });
 
   // Special services parameters
-  const [genericPhone, setGenericPhone] = useState<string>('01712345678');
+  const [genericPhone, setGenericPhone] = useState<string>('01307430464');
   const [genericNIDText, setGenericNIDText] = useState<string>(generateRandomNID());
-  const [genericIMEI, setGenericIMEI] = useState<string>('358249561022883');
+  const [genericIMEI, setGenericIMEI] = useState<string>('');
   const [activeMFSProvider, setActiveMFSProvider] = useState<'bKash' | 'Nagad' | 'Rocket'>('bKash');
 
   // Interactive Tracker states
@@ -93,7 +93,7 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
   // Device Simulation States
   const [lockState, setLockState] = useState<DeviceLockState>({
     phone: '', message: 'আপনার বিকাশ পেমেন্ট বকেয়া থাকায় মোবাইলটি লক করা হয়েছে। অবিলম্বে বকেয়া পরিশোধ করে বিকাশ নাম্বারে যোগাযোগ করুন।',
-    bkashNumber: '01712-345678', amount: '5,000', isLockedSimulation: false
+    bkashNumber: '01307430464', amount: '5,000', isLockedSimulation: false
   });
 
   // Simple OTP Bypass state
@@ -161,34 +161,34 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
     const category = service?.category || 'all';
     const sampleData: Record<string, string> = {};
     if (category === 'certificate') {
-      sampleData.fullName = 'আসিফুল ইসলাম রাফি';
-      sampleData.fatherName = 'আমিরুল ইসলাম সেলিম';
-      sampleData.nidNo = '5509124019483';
-      sampleData.mobile = '01712345678';
-      sampleData.address = 'হাউজ ১২, রোড ৫, সেক্টর ৩, উত্তরা, ঢাকা-১২৩০';
-      sampleData.purpose = 'উচ্চ শিক্ষা ও পাসপোর্ট প্রসেসিং';
+      sampleData.fullName = '';
+      sampleData.fatherName = '';
+      sampleData.nidNo = '';
+      sampleData.mobile = '';
+      sampleData.address = '';
+      sampleData.purpose = '';
     } else if (category === 'land') {
-      sampleData.ownerName = 'আসিফুল ইসলাম রাফি';
-      sampleData.khationNo = 'আর এস খতিয়ান ৫৫০';
-      sampleData.dagNo = '৩৪৩/এ';
-      sampleData.mouza = 'উত্তরা জে এল ৫';
-      sampleData.district = 'ঢাকা, উত্তরা পূর্ব';
+      sampleData.ownerName = '';
+      sampleData.khationNo = '';
+      sampleData.dagNo = '';
+      sampleData.mouza = '';
+      sampleData.district = '';
     } else if (category === 'education') {
-      sampleData.studentName = 'আসিফুল ইসলাম রাফি';
-      sampleData.boardName = 'ঢাকা শিক্ষা বোর্ড';
-      sampleData.rollNo = '৬৩৮১০২';
-      sampleData.regNo = '১৪০২৫৪০৯১';
-      sampleData.examYear = '২০২৩';
+      sampleData.studentName = '';
+      sampleData.boardName = '';
+      sampleData.rollNo = '';
+      sampleData.regNo = '';
+      sampleData.examYear = '';
     } else if (category === 'trade') {
-      sampleData.proprietorName = 'আসিফুল ইসলাম রাফি';
-      sampleData.businessName = 'আইটি এক্সপার্ট সল্যুশনস বিডি';
-      sampleData.businessAddress = '৩য় তলা, সোনারগাঁও জনপথ রোড, উত্তরা সেক্টর ৯, ঢাকা';
-      sampleData.sectorType = 'সফটওয়্যার ডেভেলপমেন্ট ও তথ্য প্রযুক্তি সেবা';
+      sampleData.proprietorName = '';
+      sampleData.businessName = '';
+      sampleData.businessAddress = '';
+      sampleData.sectorType = '';
     } else {
-      sampleData.fullName = 'আসিফুল ইসলাম রাফি';
-      sampleData.phoneNo = '01712345678';
-      sampleData.reference = 'REF-9931849';
-      sampleData.notes = 'ভেরিফাইড নাগরিক রিসিভ খসড়া কপি জেনারেট করুন।';
+      sampleData.fullName = '';
+      sampleData.phoneNo = '';
+      sampleData.reference = '';
+      sampleData.notes = '';
     }
     setGenericInputs(sampleData);
     triggerToast('Demo Data Instated', 'Form fields auto-filled successfully.');
@@ -198,44 +198,44 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
     if (type === 'birth') {
       setBirthInput({
         regNo: generateRandomBirth(),
-        dob: '22/04/1998',
-        nameBangla: 'তানিয়া রহমান মিম',
-        nameEnglish: 'Tania Rahman Mim',
-        fatherBangla: 'আনোয়ারুল কবির',
-        fatherEnglish: 'Anwarul Kabir',
-        motherBangla: 'জোহরা বেগম',
-        motherEnglish: 'Johura Begum',
-        birthPlaceBangla: 'জিন্দাবাজার, সিলেট',
-        birthPlaceEnglish: 'Zindabazar, Sylhet'
+        dob: '',
+        nameBangla: '',
+        nameEnglish: '',
+        fatherBangla: '',
+        fatherEnglish: '',
+        motherBangla: '',
+        motherEnglish: '',
+        birthPlaceBangla: '',
+        birthPlaceEnglish: ''
       });
       triggerToast('Demo Data Instated', 'Birth registry form auto-filled.');
     } else if (type === 'death') {
       setDeathInput({
         regNo: generateRandomBirth(),
-        deathDate: '09/01/2021',
-        nameBangla: 'শওকত আলী খান',
-        nameEnglish: 'Showkat Ali Khan',
-        fatherBangla: 'রহমত আলী খান',
-        motherBangla: 'ফাতেমা বেগম',
-        spouseBangla: 'মাজেদা বেগম',
-        deathPlaceBangla: 'খুলনা সদর হাসপাতাল',
-        deathPlaceEnglish: 'Khulna Sadar Hospital',
+        deathDate: '',
+        nameBangla: '',
+        nameEnglish: '',
+        fatherBangla: '',
+        motherBangla: '',
+        spouseBangla: '',
+        deathPlaceBangla: '',
+        deathPlaceEnglish: '',
         cause: 'Cardiac Arrest / হৃদযন্ত্রের ক্রিয়া বন্ধ হয়ে'
       });
       triggerToast('Demo Data Instated', 'Death certificate template loaded.');
     } else if (type === 'nid') {
       setNidInput({
         nidNo: generateRandomNID(),
-        pin: '1998' + Math.floor(100000000 + Math.random() * 900000000).toString(),
-        nameBangla: 'তানভীর আহমেদ চৌধুরী',
-        nameEnglish: 'Tanvir Ahmed Chowdhury',
-        fatherName: 'আহমেদ চৌধুরী',
-        motherName: 'নাজনীন চৌধুরী',
-        spouseName: 'উম্মে সালমা',
-        dob: '05/09/1991',
-        bloodGroup: 'B+',
-        birthPlace: 'CHITTAGONG',
-        address: 'গ্রাম/রাস্তা: আগ্রাবাদ সি/এ, ডাকঘর: জিপিও আগ্রাবাদ, পুলিশ স্টেশন: ডবলমুরিং, জেলা: চট্টগ্রাম',
+        pin: '' + Math.floor(100000000 + Math.random() * 900000000).toString(),
+        nameBangla: '',
+        nameEnglish: '',
+        fatherName: '',
+        motherName: '',
+        spouseName: '',
+        dob: '',
+        bloodGroup: '',
+        birthPlace: '',
+        address: '',
         photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=60'
       });
       triggerToast('Demo Data Instated', 'Smart ID visual fields updated.');
@@ -618,14 +618,14 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
             <div>
               <label className="text-xs font-bold text-gray-600 block mb-1">Submitted Application ID (আবেদন আইডি নম্বর)</label>
               <input
-                type="text" placeholder="e.g. BD-492049102"
+                type="text" placeholder=""
                 className="w-full bg-white border border-gray-200 rounded-xl py-2.5 px-4 text-xs font-mono text-gray-800"
               />
             </div>
             <div>
               <label className="text-xs font-bold text-gray-600 block mb-1">Registered Phone Partner (যে নাম্বার দিয়ে আবেদন করেছেন)</label>
               <input
-                type="tel" placeholder="e.g. 01712345678"
+                type="tel" placeholder=""
                 className="w-full bg-white border border-gray-200 rounded-xl py-2.5 px-4 text-xs font-mono text-gray-800"
               />
             </div>
@@ -676,7 +676,7 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
             <div>
               <label className="text-xs font-bold text-gray-600 block mb-1">Date of Birth (DOB)</label>
               <input
-                type="text" placeholder="DD/MM/YYYY" defaultValue="15/12/1995"
+                type="text" placeholder="DD/MM/YYYY" defaultValue=""
                 className="w-full bg-white border border-gray-200 rounded-xl py-2.5 px-4 text-xs font-mono text-gray-800"
               />
             </div>
@@ -1275,7 +1275,7 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
               <div>
                 <label className="text-xs font-bold text-gray-600 block mb-1">Target Phone Number</label>
                 <input
-                  type="tel" placeholder="e.g. 01712345678"
+                  type="tel" placeholder=""
                   value={bomberState.phone}
                   onChange={(e) => setBomberState(prev => ({ ...prev, phone: e.target.value }))}
                   className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-mono"

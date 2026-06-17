@@ -300,7 +300,7 @@ export default function AuthScreen({ onAuthSuccess, triggerToast }: AuthScreenPr
                     <input
                       type="text"
                       required
-                      placeholder="যেমন: আসিফুল ইসলাম রাফি"
+                      placeholder=""
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-purple-50/20 border border-purple-100 rounded-xl py-2.5 pl-10 pr-4 text-xs font-semibold text-purple-950 placeholder-purple-300 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all font-sans"
