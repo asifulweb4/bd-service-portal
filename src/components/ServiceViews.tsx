@@ -986,7 +986,7 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
 
           <div className="p-4 border rounded-xl bg-purple-50/50 space-y-3">
             <div className="grid grid-cols-3 gap-2">
-              {(['bKash', 'Nagad', 'Rocket'] as const).map(op => (
+              {(['bKash', 'Nagad'] as const).map(op => (
                 <button
                   key={op} type="button" onClick={() => setActiveMFSProvider(op)}
                   className={`py-2 text-xs border rounded-lg font-semibold cursor-pointer ${
@@ -1001,7 +1001,7 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
             <div>
               <label className="text-xs font-bold text-gray-600 block mb-1">Target Wallet account Number (MFS নম্বর)</label>
               <input
-                type="tel" maxLength={11} defaultValue="01712345678"
+                type="tel" maxLength={11} defaultValue=""
                 className="w-full bg-white border border-gray-200 rounded-xl py-2.5 px-4 text-xs font-mono"
               />
             </div>
@@ -1031,7 +1031,7 @@ export default function ServiceViews({ activeServiceId, walletBalance, deductFee
               <div>
                 <label className="text-xs font-bold text-gray-600 block mb-1">Target Phone Number</label>
                 <input
-                  type="tel" placeholder="e.g. 01712345678"
+                  type="tel" placeholder=""
                   value={trackingState.phone}
                   onChange={(e) => setTrackingState(prev => ({ ...prev, phone: e.target.value }))}
                   className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-mono"

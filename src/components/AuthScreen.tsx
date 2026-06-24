@@ -195,7 +195,7 @@ export default function AuthScreen({ onAuthSuccess, triggerToast }: AuthScreenPr
                 <input
                   type="text"
                   required
-                  placeholder="যেমন: citizen@gov.bd অথবা 017XXXXXXXX"
+                  placeholder=""
                   value={resetIdentifier}
                   onChange={(e) => setResetIdentifier(e.target.value)}
                   className="w-full bg-purple-50/20 border border-purple-100 rounded-xl py-2.5 pl-10 pr-4 text-xs font-semibold text-purple-950 placeholder-purple-300 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all font-sans"
@@ -315,7 +315,7 @@ export default function AuthScreen({ onAuthSuccess, triggerToast }: AuthScreenPr
                     <input
                       type="tel"
                       required
-                      placeholder="যেমন: 017XXXXXXXX"
+                      placeholder=""
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full bg-purple-50/20 border border-purple-100 rounded-xl py-2.5 pl-10 pr-4 text-xs font-semibold text-purple-950 placeholder-purple-300 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all font-mono"
