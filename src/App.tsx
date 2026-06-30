@@ -952,9 +952,7 @@ export default function App() {
                   <span>SYSTEM OPERATIONAL (AUTO-SECURE)</span>
                 </div>
                 
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-50/80 text-indigo-900 border border-indigo-150/50 rounded-xl shadow-xs text-[10px] font-bold font-mono tracking-wide uppercase">
-                  <span>Client ID: {new Date().getFullYear()}-SEC-AsifulIslam</span>
-                </div>
+                
 
                 {/* Highly polished WhatsApp Button with gorgeous glass effect and gradient pulse */}
                 <a

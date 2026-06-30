@@ -31,10 +31,16 @@ export const SYSTEM_SERVICES: ServiceDefinition[] = [
   { id: 'bkash-info', title: 'Bkash Info', banglaTitle: 'বিকাশ তথ্য', titleEn: 'Bkash Info', description: 'বিকাশ একাউন্টের তথ্য অনুসন্ধান', icon: '💰', color: 'bg-pink-500', category: 'mobile', fee: 399, price: 399, inputLabel: 'বিকাশ নাম্বার', inputPlaceholder: 'বিকাশ নাম্বার দিন (01XXXXXXXXX)' },
   { id: 'nagad-info', title: 'Nagad Info', banglaTitle: 'নগদ তথ্য', titleEn: 'Nagad Info', description: 'নগদ একাউন্টের তথ্য অনুসন্ধান', icon: '💸', color: 'bg-orange-500', category: 'mobile', fee: 399, price: 399, inputLabel: 'নগদ নাম্বার', inputPlaceholder: 'নগদ নাম্বার দিন (01XXXXXXXXX)' },
   { id: 'rocket-info', title: 'Rocket Info', banglaTitle: 'রকেট তথ্য', titleEn: 'Rocket Info', description: 'ডাচ বাংলা রকেট তথ্য অনুসন্ধান', icon: '🚀', color: 'bg-purple-500', category: 'mobile', fee: 399, price: 399, inputLabel: 'রকেট নাম্বার', inputPlaceholder: 'রকেট নাম্বার দিন (01XXXXXXXXX)' },
+  { id: 'sim-to-nid', title: 'SIM to NID', banglaTitle: 'সিম নাম্বার হতে এনআইডি', titleEn: 'SIM to NID', description: 'সিম কার্ডের নাম্বার হতে এনআইডি (NID) তথ্য অনুসন্ধান', icon: '📱', color: 'bg-pink-600', category: 'mobile', fee: 200, price: 200, inputLabel: 'মোবাইল নাম্বার', inputPlaceholder: '01XXXXXXXXX নাম্বার দিন' },
+  { id: 'nid-to-sims', title: 'NID to Registered SIMs', banglaTitle: 'এনআইডি হতে রেজিঃকৃত সকল সিম', titleEn: 'NID to Registered SIMs',description:'এনআইডি কার্ডের বিপরীতে নিবন্ধিত সকল মোবাইল সিম নাম্বার', icon: '🪪', color: 'bg-indigo-600', category: 'mobile', fee: 350, price: 350, inputLabel: 'এনআইডি নাম্বার', inputPlaceholder: 'জাতীয় পরিচয়পত্র নাম্বার দিন' },
+  { id: 'imei-to-active-numbers', title: 'IMEI to Active Numbers', banglaTitle: 'IMEI হতে একটিভ নাম্বার সমূহ', titleEn: 'IMEI to Active Numbers', description: 'নির্দিষ্ট আইএমইআই (IMEI) হ্যান্ডসেটে ব্যবহৃত সচল নাম্বারসমূহ', icon: '📱', color: 'bg-cyan-500', category: 'mobile', fee: 550, price: 550, inputLabel: 'IMEI নাম্বার', inputPlaceholder: '১৫ সংখ্যার IMEI নাম্বার দিন'},
+  { id: 'custom-call-list', title: 'Call List (3/6/9 Months)', banglaTitle: 'কল লিস্ট (৩/৬/৯ মাস)', titleEn: 'Call List (3/6/9 Months)', description: 'চাহিদা মোতাবেক ৩, ৬ অথবা ৯ মাসের সম্পূর্ণ কল রেকর্ড হিস্ট্রি', icon: '📞', color: 'bg-cyan-600', category: 'mobile', fee: 700, price: 700, inputLabel: 'মোবাইল নাম্বার ও মাসের মেয়াদ', inputPlaceholder: '01XXXXXXXXX এবং কত মাসের লিস্ট প্রয়োজন লিখুন' },
 
   // লোকেশন ট্র্যাকিং
   { id: 'number-location', title: 'Number to Location', banglaTitle: 'নম্বর টু লোকেশন', titleEn: 'Number to Location', description: 'মোবাইল নম্বর দিয়ে লোকেশন ট্র্যাকিং', icon: '📍', color: 'bg-red-500', category: 'location', fee: 170, price: 170, popular: true, inputLabel: 'মোবাইল নাম্বার', inputPlaceholder: '01XXXXXXXXX নাম্বার দিন' },
   { id: 'live-location', title: 'Live Location', banglaTitle: 'লাইভ লোকেশন', titleEn: 'Live Location', description: 'রিয়েলটাইম লোকেশন ট্র্যাকিং', icon: '🗺️', color: 'bg-red-600', category: 'location', fee: 250, price: 250, inputLabel: 'মোবাইল নাম্বার', inputPlaceholder: '01XXXXXXXXX নাম্বার দিন' },
+  { id: 'last-call-location', title: 'Last Call Location (LCL)', banglaTitle: 'লাষ্ট কল লোকেশন (LCL)', titleEn: 'Last Call Location (LCL)',description: 'ব্যবহৃত ফোনের IMEI এবং সর্বশেষ কথা বলা নাম্বারসহ লোকেশন', icon: '📍', color: 'bg-red-500', category: 'location', fee: 200, price: 200, inputLabel: 'মোবাইল নাম্বার', inputPlaceholder: '01XXXXXXXXX নাম্বার দিন'},
+  { id: 'tower-location-lrl', title: 'Tower Location (LRL)', banglaTitle: 'টাওয়ার লোকেশন (LRL)', titleEn: 'Tower Location (LRL)', description: 'মোবাইলের সর্বশেষ টাওয়ার ভিত্তিক লাইভ লোকেশন ট্র্যাকিং', icon: '🗺️', color: 'bg-red-600', category: 'location', fee: 200, price: 200, inputLabel: 'মোবাইল নাম্বার', inputPlaceholder: '01XXXXXXXXX নাম্বার দিন'},
 
   // সনদপত্র
   { id: 'bmet-service', title: 'BMET Service', banglaTitle: 'BMET সেবা', titleEn: 'BMET Service', description: 'বৈদেশিক কর্মসংস্থান সংক্রান্ত সেবা', icon: '✈️', color: 'bg-sky-600', category: 'cert', fee: 210, price: 210, inputLabel: 'পাসপোর্ট / আইডি নাম্বার', inputPlaceholder: 'পাসপোর্ট নাম্বার বা আইডি নাম্বার দিন' },
@@ -74,7 +80,6 @@ export const SYSTEM_SERVICES: ServiceDefinition[] = [
 ];
 
 export const MOCK_OWNER_NAMES = [
-  'Asiful Islam Rafi',
   'Mohammad Kamrul Hasan',
   'Sharmin Sultana Shumu',
   'Tanvir Ahmed Chowdhury',
